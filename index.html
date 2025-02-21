@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>আমার ওয়েবসাইট</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">আমার ওয়েবসাইট</div>
+        <div class="nav-links" id="nav-links">
+            <a href="index.html">হোম</a>
+            <a href="projects.html">প্রোজেক্টস</a>
+            <a href="about.html">আমাদের সম্পর্কে</a>
+            <a href="contact.html">যোগাযোগ</a>
+            <a href="#" onclick="toggleCalculator()">ক্যালকুলেটর</a>
+        </div>
+        <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+    </nav>
+
+    <div class="content">
+        <div class="time-section">
+            <h2>গুগল সময় (GMT)</h2>
+            <div id="google-time"></div>
+        </div>
+        <div class="image-section">
+            <h2>শরিফুল</h2>
+            <img src="your-image-url.jpg" alt="শরিফুল" class="round-image">
+            <p>এটি শরিফুলের জন্য একটি বিশেষ অংশ। এখানে আপনি শরিফুল সম্পর্কে আরও জানতে পারবেন।</p>
+        </div>
+    </div>
+
+    <div class="calculator" id="calculator">
+        <h2>ক্যালকুলেটর</h2>
+        <input type="text" id="calc-input" disabled class="calc-screen">
+        <div class="calc-buttons">
+            <button class="calc-button" onclick="appendToInput('7')">7</button>
+            <button class="calc-button" onclick="appendToInput('8')">8</button>
+            <button class="calc-button" onclick="appendToInput('9')">9</button>
+            <button class="calc-button" onclick="appendToInput('/')">/</button>
+            <button class="calc-button" onclick="appendToInput('4')">4</button>
+            <button class="calc-button" onclick="appendToInput('5')">5</button>
+            <button class="calc-button" onclick="appendToInput('6')">6</button>
+            <button class="calc-button" onclick="appendToInput('*')">*</button>
+            <button class="calc-button" onclick="appendToInput('1')">1</button>
+            <button class="calc-button" onclick="appendToInput('2')">2</button>
+            <button class="calc-button" onclick="appendToInput('3')">3</button>
+            <button class="calc-button" onclick="appendToInput('-')">-</button>
+            <button class="calc-button" onclick="appendToInput('0')">0</button>
+            <button class="calc-button" onclick="calculateResult()">=</button>
+            <button class="calc-button" onclick="clearInput()">C</button>
+            <button class="calc-button" onclick="appendToInput('+')">+</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

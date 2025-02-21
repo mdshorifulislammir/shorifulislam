@@ -1,0 +1,134 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+}
+
+.navbar {
+    background-color: lightgreen;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+}
+
+.nav-links a {
+    margin: 15px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.menu-icon {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.news-section {
+    background-color: lightyellow; /* নিউজ সেকশনের ব্যাকগ্রাউন্ড */
+    padding: 10px;
+    text-align: center;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+.time-section {
+    max-width: 30%; /* সময়ের জন্য 30% জায়গা */
+    background-color: rgba(255, 255, 255, 0.8); /* হালকা ব্যাকগ্রাউন্ড */
+    padding: 20px; /* প্যাডিং */
+    border-radius: 5px; /* কোণার গোলাকার */
+    text-align: center; /* কেন্দ্রের দিকে টেক্সট */
+}
+
+.image-section {
+    max-width: 65%; /* ছবি এবং টেক্সটের জন্য 65% জায়গা */
+    padding-left: 20px; /* টেক্সট এবং সময়ের মধ্যে ফাঁকা জায়গা */
+    text-align: center; /* কেন্দ্রের দিকে টেক্সট */
+}
+
+.round-image {
+    width: 200px; /* ছবির প্রস্থ */
+    height: 200px; /* ছবির উচ্চতা */
+    border-radius: 50%; /* গোলাকার আকার */
+    object-fit: cover; /* ছবির আকার ঠিক রাখার জন্য */
+}
+
+.calculator {
+    display: none; /* ক্যালকুলেটর শুরুতে লুকানো থাকবে */
+    margin: 20px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 5px;
+    text-align: center;
+}
+
+.calc-screen {
+    width: 100%;
+    height: 50px;
+    font-size: 24px;
+    text-align: right;
+    margin-bottom: 10px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.calc-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.calc-button {
+    padding: 20px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #ffcc00; /* বোতামের রঙ "স" */
+    border: none; /* বর্ডার অপসারণ */
+    border-radius: 5px; /* কোণার গোলাকার */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 50px;
+        left: 0;
+        right: 0;
+        background-color: lightgreen;
+    }
+    
+    .nav-links a {
+        margin: 10px 0;
+    }
+
+    .menu-icon {
+        display: block;
+    }
+
+    .content {
+        flex-direction: column; /* মোবাইলের জন্য কলাম আকারে পরিবর্তন */
+        align-items: center; /* কেন্দ্রের দিকে আনার জন্য */
+    }
+
+    .time-section, .image-section {
+        max-width: 100%; /* মোবাইলে 100% জায়গা */
+        padding: 10px; /* মোবাইলে প্যাডিং */
+    }
+}
