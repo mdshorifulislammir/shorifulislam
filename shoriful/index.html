@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramadan Timings - Bangladesh</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header>
+            <h1>Ramadan Timings in Bangladesh</h1>
+            <img src="IMG_20250217_124657_AI~2.jpg" alt="Your Photo" class="profile-photo">
+        </header>
+
+        <!-- Digital Clock -->
+        <section class="clock-section">
+            <h2>Bangladesh Time</h2>
+            <div id="digital-clock">Loading...</div>
+        </section>
+
+        <!-- Sehri and Iftar Timings Table -->
+        <section class="timings-section">
+            <h2>Today's Sehri & Iftar Timings</h2>
+            <table id="timings-table">
+                <thead>
+                    <tr>
+                        <th>Event</th>
+                        <th>Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Sehri Ends</td>
+                        <td id="sehri-time">Fetching...</td>
+                    </tr>
+                    <tr>
+                        <td>Iftar Starts</td>
+                        <td id="iftar-time">Fetching...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Azan Player -->
+        <section class="azan-section">
+            <h2>Azan at Iftar Time</h2>
+            <p>The Azan will play automatically at Iftar time.</p>
+            <audio id="azan-audio" src="assets/audio/azan.mp3"></audio>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
