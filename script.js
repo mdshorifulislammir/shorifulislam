@@ -1,74 +1,51 @@
-function toggleMenu() {
-    const navLinks = document.getElementById('nav-links');
-    if (navLinks.style.display === "flex") {
-        navLinks.style.display = "none";
-    } else {
-        navLinks.style.display = "flex";
-    }
-}
-
-// Function to update Google time (GMT)
-function updateGoogleTime() {
-    const googleTimeElement = document.getElementById('google-time');
+// Function to update the digital clock
+function updateClock() {
     const now = new Date();
-    const utc = now.getTime() + (now.getTimezoneOffset() * 60000); // UTC time
-    const gmtDate = new Date(utc);
-    googleTimeElement.innerHTML = gmtDate.toUTCString(); // Current time in GMT format
+    const options = { timeZone: 'Asia/Dhaka', hour12: true, hour: 'numeric', minute: 'numeric', second: 'numeric' };
+    const bangladeshTime = now.toLocaleTimeString('en-US', options);
+    document.getElementById('digital-clock').textContent = bangladeshTime;
 }
 
-// Update the Google time every second
-setInterval(updateGoogleTime, 1000);
+// Fetch Sehri and Iftar timings (dummy data for demonstration)
+function fetchTimings() {
+    // Replace this with actual API or data source
+    const sehriTime = "5:04 AM";
+    const iftarTime = "6:02 PM";
 
-// Function to toggle calculator visibility
-function toggleCalculator() {
-    const calculator = document.getElementById('calculator');
-    if (calculator.style.display === "none" || calculator.style.display === "") {
-        calculator.style.display = "block";
+    document.getElementById('sehri-time').textContent = sehriTime;
+    document.getElementById('iftar-time').textContent = iftarTime;
+
+    return { sehriTime, iftarTime };
+}
+
+// Play Azan at Iftar time
+function playAzanAtIftar(iftarTime) {
+    const now = new Date();
+    const [hour, minute] = iftarTime.split(/[: ]/);
+    const ampm = iftarTime.includes("PM") ? "PM" : "AM";
+    const iftarDateTime = new Date(now);
+
+    if (ampm === "PM" && hour !== "12") {
+        iftarDateTime.setHours(parseInt(hour) + 12);
     } else {
-        calculator.style.display = "none";
+        iftarDateTime.setHours(parseInt(hour));
+    }
+    iftarDateTime.setMinutes(parseInt(minute));
+    iftarDateTime.setSeconds(0);
+
+    const timeUntilIftar = iftarDateTime - now;
+
+    if (timeUntilIftar > 0) {
+        setTimeout(() => {
+            const azanAudio = document.getElementById('azan-audio');
+            azanAudio.play();
+        }, timeUntilIftar);
     }
 }
 
-// Function to append value to calculator input
-function appendToInput(value) {
-    const input = document.getElementById('calc-input');
-    input.value += value;
-}
-
-// Function to calculate result
-function calculateResult() {
-    const input = document.getElementById('calc-input');
-    try {
-        input.value = eval(input.value); // Calculate the result
-    } catch (e) {
-        input.value = "Error"; // Handle error
-    }
-}
-
-// Function to clear calculator input
-function clearInput() {
-    const input = document.getElementById('calc-input');
-    input.value = ""; // Clear the input
-}
-
-// Function to fetch live news
-async function fetchLiveNews() {
-    const newsList = document.getElementById('news-list');
-    newsList.innerHTML = ""; // Clear current news items
-
-    try {
-        const response = await fetch('https://newsapi.org/v2/top-headlines?country=bd&apiKey=');
-        const data = await response.json();
-        data.articles.forEach(article => {
-            const li = document.createElement('li');
-            li.textContent = article.title; // Display article title
-            newsList.appendChild(li);
-        });
-    } catch (error) {
-        console.error("Error fetching news:", error);
-    }
-}
-
-// Fetch live news every 60 seconds
-setInterval(fetchLiveNews, 60000);
-fetchLiveNews(); // Initial call to fetch news
+// Initialize the app
+document.addEventListener('DOMContentLoaded', () => {
+    setInterval(updateClock, 1000); // Update clock every second
+    const { iftarTime } = fetchTimings(); // Fetch timings
+    playAzanAtIftar(iftarTime); // Play Azan at Iftar time
+});
